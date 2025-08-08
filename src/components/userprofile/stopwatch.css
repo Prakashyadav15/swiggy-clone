@@ -1,0 +1,39 @@
+.background{
+    background-image: url("https://assets.ccbp.in/frontend/react-js/stopwatch-lg-bg.png");
+    padding:20px;
+    background-size: cover;
+    height:60vh;
+    width:80vh;
+}
+.timercont{
+    box-shadow: 5px 5px 10px grey;
+    min-height:20vh;
+    width:30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.buttons{
+     display: flex;
+     justify-content: space-between;
+    
+}
+.butstart{
+    background-color: green;
+    color: white;
+    border:none;
+    margin:10px;
+}
+.butstop{
+    background-color: red;
+    color: white;
+    border:none;
+    margin:10px;
+}
+.butreset{
+    background-color: orange;
+    color: white;
+    border:none;
+    margin:10px;
+}

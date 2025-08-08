@@ -1,0 +1,9 @@
+// import { useParams } from 'react-router-dom';
+// import BlogItemDetails from './blogitem'; // your class component
+
+// const BlogItemDetailsWrapper = () => {
+//   const { id } = useParams();
+//   return <BlogItemDetails id={id} />;
+// };
+
+// export default BlogItemDetailsWrapper;

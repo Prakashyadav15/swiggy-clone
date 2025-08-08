@@ -1,0 +1,62 @@
+.googleimg{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.img{
+    height: 10vh;
+   
+}
+.searchcont{
+    box-shadow:  0px 4px 16px 0px #bfbfbf;
+    min-height: 15vh;
+    border-radius: 15px;
+    padding:10px;
+}
+.icon{
+    height:20px;
+    width:20px;
+    position: absolute;
+    pointer-events: none;
+}
+.iconcont{
+    display: flex;
+    flex-direction: row;
+}
+.orderlist {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between; /* 👈 pushes item left and button right */
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* .item-text {
+  font-size: 16px;
+  color: #333;
+} */
+
+.but {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.arr {
+  width: 20px;
+  height: 20px;
+}
+.int{
+    border:1px solid #eee;
+    width:100%;
+    border-radius:3px;
+    height: fit-content;
+}
