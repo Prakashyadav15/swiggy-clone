@@ -72,10 +72,20 @@ p{
    background-color: orange;
    border:none;
    color:white;
-   height:50px;
+   height:40px;
    margin-top:10px;
    height:30px;
    cursor: pointer;
    border-radius: 4px;
+}
+.title{
+    color:orange;
+    font-weight: bold;
+    font-size:35px;
+}
+.img{
+    height:50px;
+    width:50px;
+       
 }
 }
