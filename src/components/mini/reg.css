@@ -58,6 +58,7 @@ html,body{
    height:30px;
    cursor: pointer;
    border-radius: 4px;
+   border:none;
 }
 
 .label{
@@ -94,4 +95,16 @@ h3{
     text-align: center;
     column-gap: none;
     margin:0px;
+}
+@media screen and (min-width:320px) and (max-width:480px){
+h3{
+    color:orange;
+    text-align: center;
+    column-gap: none;
+    font-size: 80px;
+}
+.line{
+    display: flex;
+    text-align:center ;
+}
 }
