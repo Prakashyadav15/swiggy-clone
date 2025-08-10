@@ -62,6 +62,7 @@ function Login(){
         }
     }catch(err){
         alert("login error :"+ err.message);
+        seterror("something went wrong")
     }
 
     
