@@ -1,0 +1,161 @@
+.cart-cont{
+    padding-top:40px;
+    height:100vh;
+    overflow-y: scroll;
+    background: linear-gradient(to bottom right, #fff7ed, #fef2f2);
+    padding-bottom:20px;
+    scrollbar-width: none;        
+    -ms-overflow-style: none;  
+     
+}
+.cart-body {
+  flex: 1;
+}
+
+.text-cart{
+    font-weight:bold;
+    font-size: larger;
+    padding: 10px;
+}
+
+.cart-cont::-webkit-scrollbar {
+  display: none;                
+}
+
+.item-name{
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+}
+.pay{
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    width:12vh;
+
+}
+.bill-row {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  margin-left: 10px;
+   margin-right: 10px;
+  padding: 10px;
+  column-gap: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.bill-header {
+  font-weight: bold;
+  background-color: #f0f0f0;
+}
+.col-main{
+    display: flex;
+    width: 30%;
+    text-align: center;
+}
+.text{
+    font-weight: bold;
+}
+
+.col {
+  width: 15%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bill-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin:0;
+    min-height:50px;
+    padding-left: 20px;
+    padding-right: 45px;
+
+ 
+}
+.empty{
+      display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top:200px;
+    height:50px;
+}
+
+.total{
+     color:black;
+     font-size: larger;
+     padding-top: 10px;
+}
+.pay-total{
+     background-color: orange;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+     width:12vh;
+    margin-bottom:10px;
+    margin-top:10px;
+    
+
+}
+@media screen and (min-width:770px){
+    .item-name{
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left:10px;
+   
+}
+.bill-total{
+    padding-right: 110px;
+}
+
+}
+@media screen and (min-width:320px)and (max-width:480px){
+    .col-quantity{
+        display: flex;
+    }
+    .col-main{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        
+    }
+   
+    .item-name{
+     margin:0px;
+     font-size: xx-small;
+    
+    }
+    .pay{
+        width:70px;
+
+    }
+    .total{
+        font-size: small;
+    }
+    .bill-total{
+        padding-right: 30px;
+    }
+    .pay-total{
+        width:6vh;
+    }
+}

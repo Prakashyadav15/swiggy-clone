@@ -1,0 +1,97 @@
+.imgg{
+    height:70px;
+    width:70px;
+}
+html,body{
+    margin:0px;
+    padding:0px;
+      height: 100%;
+    overflow: hidden;
+}
+.signup-cont{
+   display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:100vh;   
+   
+}
+.signup-form{
+    
+     width:50vh;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.form{
+   
+    display:flex;
+    flex-direction: column;
+    box-shadow: rgb(4, 4, 4);
+    padding:30px;
+    justify-content: space-around;
+   
+   
+}
+.intbox{
+    width:100%;
+    border: 1px solid rgb(194, 191, 191);
+    border-radius: 4px;
+    height:35px;
+    margin-top: 4px;
+    margin-bottom: 7px;
+  
+}
+
+.intbox::placeholder{
+    color:rgb(159, 156, 156);
+    opacity: 1;
+}
+.signup{
+   width:100%;
+   border:none;
+   background-color: orange;
+   color:white;
+   margin-top:10px;
+   height:30px;
+   cursor: pointer;
+   border-radius: 4px;
+}
+
+.label{
+    color:rgb(123, 121, 121);
+    font-size: 12px;
+    margin-bottom: 5px;
+    
+}
+
+.err{
+    color:red;
+}
+p{
+    color:green;
+}
+hr{
+    width:30%;
+    line-height: 1px solid;
+}
+.line{
+    display: flex;
+    margin:0px;
+}
+.link{
+    text-align: center;
+    margin-top: 4px;
+   
+}
+.lin{
+ text-decoration: none;
+}
+h3{
+    color:orange;
+    text-align: center;
+    column-gap: none;
+    margin:0px;
+}

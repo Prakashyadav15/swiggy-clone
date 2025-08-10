@@ -1,0 +1,66 @@
+.login-cont{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+}
+.cont-form{
+      width:50vh;
+    
+   padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #fff;
+}
+.login-form{
+     
+    display:flex;
+    flex-direction: column;
+    box-shadow: rgb(4, 4, 4);
+    padding:30px;
+    justify-content: space-around;
+}
+.img{
+    height:70px;
+    width:70px;
+   
+    
+}
+.title{
+    color:orange;
+    font-weight: bold;
+    margin:0px
+}
+.int{
+    width:100%;
+    border: 1px solid rgb(194, 191, 191);
+    border-radius: 4px;
+    height:40px;
+    margin-bottom: 10px;
+    padding:4px;
+}
+label{
+    color:rgb(159, 156, 156);
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+h3{
+    color:orange;
+    text-align: center;
+    column-gap: none;
+    margin:0px;
+}
+.loginbut{
+   width:100%;
+   border:none;
+   background-color: orange;
+   color:white;
+   margin-top:10px;
+   height:30px;
+   cursor: pointer;
+   border-radius: 4px;
+}
+p{
+    color:red;
+}
