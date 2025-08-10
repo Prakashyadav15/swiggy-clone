@@ -64,3 +64,18 @@ h3{
 p{
     color:red;
 }
+@media screen and (min-width:480px){
+ 
+.loginbut{
+   width:100%;
+   border:none;
+   background-color: orange;
+   border:none;
+   color:white;
+   height:40px;
+   margin-top:10px;
+   height:30px;
+   cursor: pointer;
+   border-radius: 4px;
+}
+}
