@@ -1,12 +1,22 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { ItemsList } from "./data";
 import "./similarItem.css"
  function Similar(){
 
      const {id}=useParams()
      const item= ItemsList.find((i)=>i.id===Number(id))
-      const[sortorder,setsortorder]=useState("highest")
+    const[sortorder,setsortorder]=useState("highest")
+    const [cartQuantities, setCartQuantities] = useState({});
+
+    useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const qtyMap = {};
+    storedCart.forEach((p) => {
+      qtyMap[p.id] = p.quantity || 1;
+    });
+    setCartQuantities(qtyMap);
+  }, []);
 
     const handlesort=(e)=>{
         setsortorder(e.target.value)
@@ -23,17 +33,27 @@ import "./similarItem.css"
       }
      
     }
-   const addtocart = (item) => {
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const alreadyexists=cart.some(similarItems=>similarItems.id===item.id)
-        if(!alreadyexists){
-          cart.push(item);
-          localStorage.setItem("cart", JSON.stringify(cart));
+const updateCart = (product, newQty) => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-        }
-        
-       
-   };
+    if (newQty <= 0) {
+      cart = cart.filter((p) => p.id !== product.id);
+    } else {
+      const index = cart.findIndex((p) => p.id === product.id);
+      if (index >= 0) {
+        cart[index].quantity = newQty;
+      } else {
+        cart.push({ ...product, quantity: newQty });
+      }
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    setCartQuantities((prev) => ({
+      ...prev,
+      [product.id]: newQty
+    }));
+  };
 
  
        return(
@@ -63,7 +83,17 @@ import "./similarItem.css"
                                  <p className="price">₹{similar.price} </p>
                                 <span>⭐ {similar.rating}</span>
                             </div>
-                            <button onClick={()=>addtocart(similar)} className="add">Add</button>
+                             {qty === 0 ? (
+                              <button onClick={() => updateCart(similar, 1)} className="add">
+                                Add
+                              </button>
+                              ) : (
+                                <div className="quantity-controls">
+                                  <button onClick={() => updateCart(similar, qty - 1)}>-</button>
+                                  <span style={{ margin: "0 10px" }}>{qty}</span>
+                                  <button onClick={() => updateCart(similar, qty + 1)}>+</button>
+                                </div>
+                              )}
                         </div>
 
                     </div>
