@@ -1,16 +1,13 @@
 import { useParams } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import { ItemsList } from "./data";
 import "./similarItem.css"
-import { CartContext } from "./cartcontext";
  function Similar(){
 
-    const {id}=useParams()
-    const item= ItemsList.find((i)=>i.id===Number(id))
+     const {id}=useParams()
+     const item= ItemsList.find((i)=>i.id===Number(id))
     const[sortorder,setsortorder]=useState("highest")
-    const {cart,addToCart,removeFromCart } = useContext(CartContext);
-
-
+   
     const handlesort=(e)=>{
         setsortorder(e.target.value)
      }
@@ -26,10 +23,17 @@ import { CartContext } from "./cartcontext";
       }
      
     }
-    const getQuantity=(itemId)=>{
-      const found=cart.find((c)=>c.id===itemId)
-      return found ? found.quantity:0;
-    }
+   const addtocart = (item) => {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const alreadyexists=cart.some(similarItems=>similarItems.id===item.id)
+        if(!alreadyexists){
+          cart.push(item);
+          localStorage.setItem("cart", JSON.stringify(cart));
+
+        }
+        
+       
+   };
 
  
        return(
@@ -59,17 +63,7 @@ import { CartContext } from "./cartcontext";
                                  <p className="price">₹{similar.price} </p>
                                 <span>⭐ {similar.rating}</span>
                             </div>
-                              {quantity > 0 ? (
-                              <div className="quantity-controls">
-                                <button onClick={() => removeFromCart(similar.id)}>-</button>
-                                <span>{quantity}</span>
-                                <button onClick={() => addToCart(similar)}>+</button>
-                              </div>
-                            ) : (
-                              <button onClick={() => addToCart(similar)} className="add">
-                                Add
-                              </button>
-                            )}
+                            <button onClick={()=>addtocart(similar)} className="add">Add</button>
                         </div>
 
                     </div>
