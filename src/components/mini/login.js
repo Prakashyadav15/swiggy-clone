@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 
 
@@ -78,17 +78,18 @@ function Login(){
             <div className="cont-form">
             
                 <form className="login-form">
-                    <img src="swiggyClone/logo.png" className="img" alt="logo"/>
-                        <h3 className="title">Dragons kitchen</h3>
-                        <h2 className="text-center mt-2">Login</h2>
+                    <img src="swiggyClone/logo.png" className="img-icon" alt="logo"/>
+                        <h3 className="dragon">Dragons kitchen</h3>
+                       
                     <label htmlFor="user">USERNAME</label>
                     <input id="user" value={username} type="text" placeholder="username" onChange={(e)=>setusername(e.target.value)} className="int"/>
 
                     <label htmlFor="pass">PASSWORD</label>
                     <input id="pass" value={password} type="password" placeholder="password" onChange={(e)=>setpassword(e.target.value)} className="int"/>
 
-                    <button type="submit" className="loginbut" onClick={handlelogin}>Login</button>
+                    <button type="submit" className="login-but" onClick={handlelogin}>Login</button>
                     {error && <p >{error}</p>}
+                    <p className="reges">you can register if not?<Link to="/reg">reg</Link></p>
                 </form>
         
             </div>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
-import { Link } from 'react-router-dom';
 
 import './reg.css'
 function Signup(){
@@ -89,7 +88,7 @@ function Signup(){
                 <form className="form">
                     <img src="swiggyclone/logo.png" className="imgg" alt="logo"/>
                     <h3 className="title">Dragons kitchen</h3>
-                    <h4 className="text-center mt-2">Signup</h4>
+                  
                     <div>
                         <label htmlFor="user" className="label">USERNAME</label>
                         <input id="user" value={username} type="text" className="intbox" placeholder="username" onChange={(e)=>setusername(e.target.value)}/>
@@ -108,13 +107,8 @@ function Signup(){
                         {success&& <p>{success}</p>}
                     </div>
                 </form>
-                <div className="line">
-                    <hr/>OR<hr/>
-                </div>
-                <div className="link">
-                    <Link to="/login"className="lin" >Login</Link>
-
-                </div>
+                
+               
             </div>
 
         </div>

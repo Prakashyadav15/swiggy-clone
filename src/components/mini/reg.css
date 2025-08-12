@@ -1,6 +1,6 @@
 .imgg{
-    height:70px;
-    width:70px;
+    height:50px;
+    width:60px;
 }
 html,body{
     margin:0px;
@@ -37,11 +37,14 @@ html,body{
 }
 .intbox{
     width:100%;
-    border: 1px solid rgb(194, 191, 191);
-    border-radius: 4px;
-    height:35px;
-    margin-top: 4px;
+    border: 1px solid grey;
+    border-radius: 7px;
+    height:37px;
+    padding:7px;
+    outline:none;
+    margin-top: 1px;
     margin-bottom: 7px;
+     border-color:rgba(187, 183, 183, 0.968);
   
 }
 
@@ -55,16 +58,17 @@ html,body{
    background-color: orange;
    color:white;
    margin-top:10px;
-   height:30px;
+   height:35px;
    cursor: pointer;
-   border-radius: 4px;
+   border-radius: 7px;
    border:none;
+   
 }
 
 .label{
-    color:rgb(123, 121, 121);
+    color:grey;
     font-size: 12px;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     
 }
 
@@ -84,16 +88,20 @@ hr{
 }
 .link{
     text-align: center;
-    margin-top: 4px;
+    margin:0px;
+    
    
+}
+hr{
+    margin:0px;
 }
 .lin{
  text-decoration: none;
 }
-h3{
+.title{
+    font-size: 30px;
     color:orange;
     text-align: center;
-    column-gap: none;
     margin:0px;
 }
 @media screen and (min-width:320px) and (max-width:480px){
@@ -106,5 +114,26 @@ h3{
 .line{
     display: flex;
     text-align:center ;
+}
+.signup-cont{
+   display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:100vh;   
+   
+}
+.signup-form{
+    
+     width:40vh;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.imgg{
+    height:40px;
+    width:50px;
 }
 }
