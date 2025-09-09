@@ -1,15 +1,22 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 
 export const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+export const useCart = () => {
+  return useContext(CartContext);
+};
 
-  // Load from localStorage on page load
-  useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(savedCart);
-  }, []);
+export const CartProvider = ({ children }) => {
+  // OPTIMIZATION: Use a function for initial state to run it only once
+  const [cart, setCart] = useState(() => {
+    try {
+      const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+      return savedCart;
+    } catch (error) {
+      console.error("Failed to parse cart from localStorage", error);
+      return [];
+    }
+  });
 
   // Save to localStorage whenever cart changes
   useEffect(() => {
@@ -18,8 +25,8 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (item) => {
     setCart((prevCart) => {
-      const existing = prevCart.find((p) => p.id === item.id);
-      if (existing) {
+      const existingItem = prevCart.find((p) => p.id === item.id);
+      if (existingItem) {
         return prevCart.map((p) =>
           p.id === item.id ? { ...p, quantity: p.quantity + 1 } : p
         );
@@ -27,20 +34,43 @@ export const CartProvider = ({ children }) => {
       return [...prevCart, { ...item, quantity: 1 }];
     });
   };
-
-  const removeFromCart = (itemId) => {
+  
+  // RENAMED for clarity: This function decreases quantity
+  const decreaseQuantity = (itemId) => {
     setCart((prevCart) =>
       prevCart
         .map((p) =>
           p.id === itemId ? { ...p, quantity: p.quantity - 1 } : p
         )
-        .filter((p) => p.quantity > 0)
+        .filter((p) => p.quantity > 0) // Automatically remove if quantity is 0
     );
   };
+  
+  // NEW: Completely removes an item regardless of quantity
+  const removeItem = (itemId) => {
+    setCart((prevCart) => prevCart.filter((p) => p.id !== itemId));
+  };
 
-  return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
-      {children}
-    </CartContext.Provider>
-  );
+  // NEW: Clears the entire cart
+  const clearCart = () => {
+    setCart([]);
+  };
+  
+  // NEW: Calculated values are provided to all consumers
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+  const totalAmount = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+
+
+  // The value provided to consuming components
+  const value = {
+    cart,
+    addToCart,
+    decreaseQuantity,
+    removeItem,
+    clearCart,
+    cartCount,
+    totalAmount
+  };
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

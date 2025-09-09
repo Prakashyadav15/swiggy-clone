@@ -1,9 +1,10 @@
 import {Link,useNavigate} from "react-router-dom";
 import Cookies from "js-cookie";
 import "./home.css"
-
+import { useCart } from "./cartcontext";
 
 function Navbar(){
+ const { cartCount } = useCart();
    const navigate=useNavigate()
     const handleLogout=async()=>{
        Cookies.remove("token")
@@ -33,6 +34,9 @@ function Navbar(){
                             <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
                             <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
                         </svg>
+                         {cartCount > 0 && (
+                            <span className="cart-badge">{cartCount}</span>
+                        )}
                     </Link>
                     <Link to ="/history" className="link-deco">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-clock-history" viewBox="0 0 16 16">
@@ -40,6 +44,7 @@ function Navbar(){
                             <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z"/>
                             <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5"/>
                         </svg>
+                       
                     </Link>
                     <button className="logoutbut" onClick={handleLogout}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-right" viewBox="0 0 16 16">

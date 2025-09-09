@@ -10,12 +10,6 @@ import "./info.css"
 
 function Home(){
     const[search,setsearch]=useState("")
-
-
-
-
-
-
      const navigate=useNavigate();
 
      useEffect(()=>{
@@ -35,11 +29,11 @@ function Home(){
                 const response=await fetch(url,options)
                 const data=await response.json()
                 if(!data.auth){
-                    navigate('/login')
+                    navigate('/')
                 }
 
              }catch(err){
-                navigate("/login")
+                navigate("/")
              }
         }
        verifytoken();

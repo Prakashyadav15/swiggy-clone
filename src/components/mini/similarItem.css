@@ -1,5 +1,6 @@
 .similar-items{
     height:100vh;
+    margin-top: 30px;;
     overflow-y: scroll;
    background: linear-gradient(to bottom right, #fff7ed, #fef2f2);
    padding-bottom:20px;

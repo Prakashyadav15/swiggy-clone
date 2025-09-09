@@ -67,7 +67,7 @@ function Signup(){
             setpassword("")
  
            
-            navigate("./login")
+            navigate("/")
             
 
             }else{

@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { ItemsList } from "./data";
+import { useCart } from "./cartcontext";
 import "./similarItem.css"
  function Similar(){
 
      const {id}=useParams()
      const item= ItemsList.find((i)=>i.id===Number(id))
     const[sortorder,setsortorder]=useState("highest")
-   
+    const { cart, addToCart, increaseQuantity, decreaseQuantity } = useCart();
     const handlesort=(e)=>{
         setsortorder(e.target.value)
      }
@@ -22,20 +23,7 @@ import "./similarItem.css"
         return itemscopy.sort((a,b)=>a.rating-b.rating);
       }
      
-    }
-   const addtocart = (item) => {
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const alreadyexists=cart.some(similarItems=>similarItems.id===item.id)
-        if(!alreadyexists){
-          cart.push(item);
-          localStorage.setItem("cart", JSON.stringify(cart));
-
-        }
-        
-       
-   };
-
- 
+    } 
        return(
             <>
             
@@ -50,7 +38,10 @@ import "./similarItem.css"
                 </div>
                 <hr/>
                 <div className="similar-items-list ">
-                    {getsorteditems().map((similar)=>(
+                    {getsorteditems().map((similar)=>{
+                       const itemInCart = cart.find((cart) => cart.id === similar.id);
+
+                    return (
                      <div key={similar.id} className="items-card shadow">
                         <div className="img-card">
                             <img src={`/${similar.image}`} alt={similar.image} className="similar-img"/>
@@ -63,12 +54,22 @@ import "./similarItem.css"
                                  <p className="price">₹{similar.price} </p>
                                 <span>⭐ {similar.rating}</span>
                             </div>
-                            <button onClick={()=>addtocart(similar)} className="add">Add</button>
+                            {itemInCart?(
+                              <div className="quantity-stepper">
+                                <button onClick={() => decreaseQuantity(similar.id)}>-</button>
+                                <span>{itemInCart.quantity}</span>
+                                <button onClick={() => increaseQuantity(similar.id)}>+</button>
+                              </div>
+                            ):(
+                               <button onClick={() => addToCart(similar)} className="add">
+                                  Add
+                                </button>
+                            )}
                         </div>
 
                     </div>
                                     
-                    ))}
+                    )})}
                 </div>
             </div>
        </>

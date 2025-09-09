@@ -60,6 +60,7 @@ h3{
    border:none;
    background-color: orange;
    color:white;
+   outline-color:orange;
    margin-top:10px;
    height:35px;
    cursor: pointer;
@@ -69,6 +70,7 @@ p{
     color:red;
 }
 .reges{
+    margin:0px;
     color:grey;
 }
 @media screen and (max-width:480px){

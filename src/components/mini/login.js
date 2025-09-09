@@ -19,7 +19,7 @@ function Login(){
             }
 
         }catch(err){
-            navigate("/login")
+            navigate("/")
         }
         }
         verifytoken();

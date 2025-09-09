@@ -1,50 +1,14 @@
-import { useState,useEffect } from "react";
+import { useCart } from "./cartcontext";
 import { useNavigate } from "react-router-dom";
 import Info from "./info";
 import "./cart.css"
 import "./info.css"
 function Cart(){
-    const [cartitem,setcartitem]=useState([]);
-    const navigate=useNavigate();
+  
+   const { cart, increaseQuantity, decreaseQuantity, handleRemove, totalAmount } = useCart();
+   const navigate=useNavigate();
 
-    useEffect(()=>{
-        const storedCart=JSON.parse(localStorage.getItem("cart"))||[]; // loading cart item from localstorage if it is empty []
-        const updatedcart= storedCart.map(item=>({...item,quantity:1})); //adding quantity 1 for each item 
-        setcartitem(updatedcart);
-    },[]);
-    
-    const decrease=(id)=>{
-        const updated=cartitem.map(item=>{
-            if(item.id===id && item.quantity>1){
-               return {...item,quantity:item.quantity-1}
-            }
-            return item;
-        });
-        setcartitem(updated)
-           
-        
-    }
-
-     const increase=(id)=>{
-        const updated=cartitem.map(item=>{
-            if(item.id===id){
-                return{...item,quantity:item.quantity+1}
-            }
-            return item
-        });
-        setcartitem(updated)
-    }
-
-    const handleRemove=(id)=>{
-        const updated=cartitem.filter(item=>item.id!==id)
-        setcartitem(updated)
-        localStorage.setItem("cart",JSON.stringify(updated))
-    }
-    const totalAmount = cartitem.reduce(
-        (total, item) => total + item.price * item.quantity,
-        0
-        );
-    const handlepay=async()=>{
+      const handlepay=async()=>{
       try{
         const user = JSON.parse(localStorage.getItem("user"));
         const user_id = user?.id;
@@ -57,8 +21,8 @@ function Cart(){
         const order={
           id:Date.now().toString(),
           user_id:user?.id,
-          items:JSON.stringify(cartitem),
-          total_price:cartitem.reduce((acc,item)=>acc+item.price * item.quantity,0),
+          items:JSON.stringify(cart),
+          total_price:cart.reduce((acc,item)=>acc+item.price * item.quantity,0),
            order_date: new Date().toISOString()
         }
 
@@ -86,9 +50,9 @@ function Cart(){
     <div className="cart-cont">
       <h2 className="text-cart">Your Cart</h2>
 
-      {cartitem.length === 0 ? (
+      {cart.length === 0 ? (
         <div  className="empty">
-          <img src="swiggyClone/empty-cart.png"/>
+          <img src="swiggyClone/empty-cart.png" alt="empty"/>
         </div>
       ) : (
         <>
@@ -102,7 +66,7 @@ function Cart(){
           </div>
 
           {/* Items */}
-          {cartitem.map(item => (
+          {cart.map(item => (
             <div className="bill-row" key={item.id}>
               <div className="col-main">
                 <img src ={`/${item.image}`} alt={item.name} className="item-img"/>
@@ -110,9 +74,9 @@ function Cart(){
               </div>
               <div className="col">
                 <div className="col-quantity">
-                    <button onClick={() => decrease(item.id)}>-</button>
+                    <button onClick={() => decreaseQuantity(item.id)}>-</button>
                     <span style={{ margin: "0 10px" }}>{item.quantity}</span>
-                    <button onClick={() => increase(item.id)}>+</button>
+                    <button onClick={() => increaseQuantity(item.id)}>+</button>
                 </div>
               </div>
               <div className="col text">{item.price}</div>
