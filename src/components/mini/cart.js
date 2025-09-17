@@ -5,7 +5,7 @@ import "./cart.css"
 import "./info.css"
 function Cart(){
   
-   const { cart, increaseQuantity, decreaseQuantity, handleRemove, totalAmount } = useCart();
+   const { cart, increaseQuantity, decreaseQuantity, removeItem, totalAmount } = useCart();
    const navigate=useNavigate();
 
       const handlepay=async()=>{
@@ -74,15 +74,15 @@ function Cart(){
               </div>
               <div className="col">
                 <div className="col-quantity">
-                    <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                    <button onClick={() => decreaseQuantity(item.id)} className="but-qun">-</button>
                     <span style={{ margin: "0 10px" }}>{item.quantity}</span>
-                    <button onClick={() => increaseQuantity(item.id)}>+</button>
+                    <button onClick={() => increaseQuantity(item.id)}className="but-qun">+</button>
                 </div>
               </div>
               <div className="col text">{item.price}</div>
               <div className="col text">{item.price * item.quantity}</div>
               <div className="col">
-                <button onClick={() => handleRemove(item.id)} className="pay">Remove</button>
+                <button onClick={() => removeItem(item.id)} className="pay">Remove</button>
               </div>
             </div>
           ))}

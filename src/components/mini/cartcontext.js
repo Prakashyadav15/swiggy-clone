@@ -35,6 +35,15 @@ export const CartProvider = ({ children }) => {
     });
   };
   
+    const increaseQuantity = (itemId) => {
+      setCart((prevCart) =>
+        prevCart.map((item) =>
+          item.id === itemId
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      );
+    };
   // RENAMED for clarity: This function decreases quantity
   const decreaseQuantity = (itemId) => {
     setCart((prevCart) =>
@@ -66,6 +75,7 @@ export const CartProvider = ({ children }) => {
     cart,
     addToCart,
     decreaseQuantity,
+    increaseQuantity,
     removeItem,
     clearCart,
     cartCount,

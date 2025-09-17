@@ -8,7 +8,7 @@ function Navbar(){
    const navigate=useNavigate()
     const handleLogout=async()=>{
        Cookies.remove("token")
-        navigate("/login")
+        navigate("/")
     }
     // const user_name =localStorage.getItem("user")
     // const identify_user=user_name.user[0]

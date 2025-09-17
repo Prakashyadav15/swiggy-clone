@@ -55,10 +55,10 @@ import "./similarItem.css"
                                 <span>⭐ {similar.rating}</span>
                             </div>
                             {itemInCart?(
-                              <div className="quantity-stepper">
-                                <button onClick={() => decreaseQuantity(similar.id)}>-</button>
+                              <div className="col-quantity">
+                                <button onClick={() => decreaseQuantity(similar.id)} className="but-qun">-</button>
                                 <span>{itemInCart.quantity}</span>
-                                <button onClick={() => increaseQuantity(similar.id)}>+</button>
+                                <button onClick={() => increaseQuantity(similar.id)}className="but-qun">+</button>
                               </div>
                             ):(
                                <button onClick={() => addToCart(similar)} className="add">
@@ -72,6 +72,7 @@ import "./similarItem.css"
                     )})}
                 </div>
             </div>
+
        </>
        )
 

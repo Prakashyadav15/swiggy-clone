@@ -40,6 +40,13 @@
     width:12vh;
 
 }
+.but-qun{
+    border:grey;
+    height:30px;
+    margin-left:3px;
+    margin-right:3px;
+
+}
 .bill-row {
   display: flex;
   justify-content: space-between;
@@ -128,11 +135,18 @@
 .bill-total{
     padding-right: 110px;
 }
+.col-quantity{
+        display: flex;
+        margin:3px;
+        border:none;
+    }
 
 }
 @media screen and (min-width:320px)and (max-width:480px){
     .col-quantity{
         display: flex;
+        margin:3px;
+        border:none;
     }
     .col-main{
         display: flex;

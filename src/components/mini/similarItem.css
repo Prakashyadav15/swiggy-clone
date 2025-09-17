@@ -58,18 +58,17 @@
     box-shadow: black;
      width:90%;
 }
-.items-card :hover{
-     transform: scale(1.05);
-  transition: 0.3s ease-in-out;
-  cursor: pointer;
- 
-}
 
 .similar-img{
     width:100%;
     height:25vh;
     
     border-radius: 10px;
+}
+.similar-img:hover{
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+     cursor: pointer;
 }
 .card-details{
     padding:20px;
